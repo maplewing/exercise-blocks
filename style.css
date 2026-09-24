@@ -5,11 +5,11 @@
   --muted: #94486a;
   --line: #ffc9de;
   --accent: #ff4f95;
-  --accent-strong: #d81b5c;
+  --accent-strong: #c8102e;
   --accent-soft: #ffe3ee;
   --accent-text: #ffffff;
-  --grad: linear-gradient(135deg, #f0367f, #d81b5c);
-  --shadow: 0 8px 20px -10px rgba(216, 27, 92, .45);
+  --grad: linear-gradient(135deg, #ea2a3f, #c8102e);
+  --shadow: 0 8px 20px -10px rgba(200, 16, 46, .45);
   --star: #ff8fbd;
   --font-body: "Nunito", ui-rounded, "SF Pro Rounded", system-ui, sans-serif;
   --font-script: "Pacifico", "Snell Roundhand", "Brush Script MT", cursive;
@@ -23,7 +23,7 @@
     --muted: #e7a6c2;
     --line: #6d2245;
     --accent: #ff7ab3;
-    --accent-strong: #ff8fbd;
+    --accent-strong: #ff6b78;
     --accent-soft: #59173a;
     --shadow: 0 8px 20px -10px rgba(0, 0, 0, .6);
     --star: #ff9cc6;
