@@ -110,9 +110,10 @@ const EXERCISES = [
     progressions: [
       { name: "Farmer carries" },
       { name: "Heavier farmer carries", note: "Use heavier weights, as long as you can keep standing tall." },
-      { name: "Suitcase carries", note: "Carry one heavy weight in a single hand and don't let your torso lean. Switch hands." },
+      { name: "Uneven weight farmer carries", note: "Carry a heavier weight in one hand and a lighter one in the other, and don't let your torso lean toward the heavy side. Swap hands on the way back." },
+      { name: "Uneven heavier farmer carries", note: "Use heavier weights in both hands, keeping one side heavier than the other. Swap hands on the way back." },
     ],
-    suggestions: ["Heavier suitcase carries", "Front rack kettlebell carries"],
+    suggestions: ["Suitcase carries (one heavy weight, one hand)", "Front rack kettlebell carries"],
   },
   {
     id: "single-leg-rdl",
@@ -147,6 +148,7 @@ const EXERCISES = [
       { name: "Fire hydrants with band" },
       { name: "Fire hydrants with stronger band", note: "Use the next band up in resistance." },
       { name: "Fire hydrants with stronger band and pause", note: "Hold 3 seconds at the top of each rep." },
+      { name: "Fire hydrants 90/90 with back leg elevation", note: "Set up in a 90/90 position with your back leg elevated on a step or bench, then lift the working leg out to the side as in a fire hydrant, keeping your hips level." },
     ],
     suggestions: ["Fire hydrants with band and an ankle weight", "Fire hydrant into donkey kick combo with band"],
   },
@@ -187,7 +189,7 @@ const EXERCISES = [
     suggestions: ["Goblet Bulgarian split squats", "Front squats with two kettlebells"],
   },
   {
-    id: "band-anti-rotation-mini-squat",
+    id: "pallof-press-mini-hinge",
     name: "Pallof press with mini hinge",
     category: "Core",
     description: "Stand sideways to a band anchored at chest height, holding it in both hands at your chest. Let the band pull sideways while you resist, keeping your shoulders and hips square. Do short hip hinges, pushing your hips back a little and standing tall again, while holding that position. Switch sides.",
