@@ -147,7 +147,7 @@
     const next = ex.progressions[level + 1];
     return h("div", { class: "levelbar" },
       next
-        ? h("button", { class: "btn small", type: "button", onclick: () => setLevel(ex, level + 1) }, "Ready to progress ↑")
+        ? h("button", { class: "btn small", type: "button", onclick: (e) => { celebrateLevelUp(e.clientX, e.clientY); setLevel(ex, level + 1); } }, "Ready to progress ↑")
         : requestControl(ex),
       level > 0 && h("button", { class: "btn small", type: "button", onclick: () => setLevel(ex, level - 1) }, "Back a level"),
       next && h("span", { class: "hint" }, "Next: " + next.name)
@@ -398,10 +398,10 @@
 
   // A little burst of sparkles where a block was checked off. Purely decorative
   // (hidden for reduced-motion users in CSS).
-  function sparkleBurst(x, y) {
+  function sparkleBurst(x, y, count = 10) {
     const glyphs = ["✦", "✧", "♥", "✦", "✧"];
-    for (let i = 0; i < 10; i++) {
-      const angle = (Math.PI * 2 * i) / 10 + Math.random() * 0.5;
+    for (let i = 0; i < count; i++) {
+      const angle = (Math.PI * 2 * i) / count + Math.random() * 0.5;
       const dist = 40 + Math.random() * 40;
       const s = h("span", { class: "spark", "aria-hidden": "true" }, glyphs[i % glyphs.length]);
       s.style.left = x + "px";
@@ -412,6 +412,27 @@
       document.body.append(s);
       s.addEventListener("animationend", () => s.remove());
     }
+  }
+
+  // Brief message at the bottom of the screen; one at a time.
+  let toastEl = null;
+  let toastTimer = null;
+  function showToast(text) {
+    if (!toastEl) {
+      toastEl = h("div", { class: "toast", role: "status", "aria-live": "polite" });
+      document.body.append(toastEl);
+    }
+    toastEl.textContent = text;
+    toastEl.classList.remove("show");
+    void toastEl.offsetWidth; // restart the animation if it was already showing
+    toastEl.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toastEl.classList.remove("show"), 2800);
+  }
+
+  function celebrateLevelUp(x, y) {
+    sparkleBurst(x, y, 18);
+    showToast("aw snap, look who's a boss b ✦");
   }
 
   // ---------- views: Today ----------
