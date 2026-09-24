@@ -480,6 +480,8 @@
       const level = levelOf(ex);
       const hasLevels = ex.progressions && ex.progressions.length > 0;
       const note = hasLevels && ex.progressions[level].note;
+      // A level can be a different movement altogether and carry its own instructions.
+      const description = (hasLevels && ex.progressions[level].description) || ex.description;
 
       list.append(
         h("li", { class: "block" + (block.done ? " done" : "") },
@@ -498,7 +500,7 @@
               ex.category && h("span", { class: "tag" }, ex.category),
               hasLevels && h("span", { class: "tag level" }, `Level ${level + 1} of ${ex.progressions.length}`)
             ),
-            ex.description && h("p", { class: "desc" }, ex.description),
+            description && h("p", { class: "desc" }, description),
             note && h("p", { class: "desc note" }, note),
             timerControls(block),
             levelControls(ex)

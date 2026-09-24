@@ -1,6 +1,6 @@
 // Network-first service worker: always tries the live site so updates show up
 // right away, and falls back to the last copy it saw when there's no signal.
-const CACHE = "exercise-blocks-v1";
+const CACHE = "exercise-blocks-v2";
 const SHELL = [
   "./", "index.html", "style.css", "app.js", "exercises.js",
   "manifest.webmanifest", "icon-192.png", "apple-touch-icon.png",
@@ -22,7 +22,9 @@ self.addEventListener("fetch", (event) => {
   const req = event.request;
   if (req.method !== "GET") return;
   event.respondWith(
-    fetch(req)
+    // "no-cache" = always check with the server (a cheap 304 when unchanged), so a fresh
+    // deploy shows up right away instead of after the browser's own cache expires.
+    fetch(req, { cache: "no-cache" })
       .then((res) => {
         if (res.ok || res.type === "opaque") {
           const copy = res.clone();

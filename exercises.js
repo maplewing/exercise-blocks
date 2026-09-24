@@ -5,9 +5,11 @@
 //   name         what the user sees
 //   category     any label you like (used as a tag on the card)
 //   description  how to do it — shown as the guide text
-//   progressions OPTIONAL. Ordered easiest -> hardest: [{ name, note }, ...].
+//   progressions OPTIONAL. Ordered easiest -> hardest: [{ name, note, description }, ...].
 //                The first entry is the starting level and should match `name`.
 //                `note` is the change from the base exercise, shown under the description.
+//                `description` is only for a level that is a different exercise altogether
+//                (e.g. a hydrant progressing into a 90/90); it replaces the guide text at that level.
 //                Any number of levels works. The user's current level per exercise is
 //                stored separately, and each logged block records which level was done,
 //                so adding levels later doesn't break existing history.
@@ -85,7 +87,10 @@ const EXERCISES = [
     progressions: [
       { name: "Wall sit" },
       { name: "Weighted wall sit", note: "Hold a dumbbell or weight at your chest." },
-      { name: "Kickstand squats", note: "Stand with one foot a little behind you and only your toes touching the floor for balance. Squat down mostly on the front leg. Switch sides." },
+      {
+        name: "Kickstand squats",
+        description: "Stand with your feet hip-width apart, then step one foot back so only its toes touch the floor for balance. Squat straight down, keeping almost all of your weight on the front leg, then stand back up. Switch sides.",
+      },
     ],
     suggestions: ["Weighted kickstand squats", "Bulgarian split squats"],
   },
@@ -148,7 +153,10 @@ const EXERCISES = [
       { name: "Fire hydrants with band" },
       { name: "Fire hydrants with stronger band", note: "Use the next band up in resistance." },
       { name: "Fire hydrants with stronger band and pause", note: "Hold 3 seconds at the top of each rep." },
-      { name: "Fire hydrants 90/90 with back leg elevation", note: "Set up in a 90/90 position with your back leg elevated on a step or bench, then lift the working leg out to the side as in a fire hydrant, keeping your hips level." },
+      {
+        name: "90/90 with back leg elevation",
+        description: "Sit on the floor in a 90/90 position: front knee bent to 90 degrees in front of you, back knee bent to 90 degrees out to the side. Sit tall, then lift the back leg off the floor and hold it there, keeping your torso upright and your hips still. Switch sides.",
+      },
     ],
     suggestions: ["Fire hydrants with band and an ankle weight", "Fire hydrant into donkey kick combo with band"],
   },
